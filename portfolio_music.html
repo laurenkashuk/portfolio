@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Music and event marketing portfolio for Lauren Kashuk.">
+<title>Lauren Kashuk | Music + Events</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--white:#f5f3ee;--accent:#c8a96e;--mid:#1a1a1a;--muted:#777;--border:rgba(255,255,255,0.08)}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2.5rem;background:rgba(10,10,10,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent)}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 5rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,169,110,0.03) 0%,transparent 60%)}
+.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:80px 80px;opacity:0.4}
+.hero-tag{display:inline-block;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(200,169,110,0.4);padding:0.4rem 0.9rem;margin-bottom:1.5rem;position:relative}
+.hero-headline{font-size:clamp(3rem,7vw,6.5rem);font-weight:300;line-height:1.0;letter-spacing:-0.025em;max-width:850px;margin-bottom:1.5rem;position:relative}
+.hero-headline em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:520px;line-height:1.75;margin-bottom:2.5rem;position:relative}
+.hero-stats{display:flex;gap:3rem;flex-wrap:wrap;position:relative}
+.hero-stat-num{font-size:2rem;font-weight:300;color:var(--accent);display:block;letter-spacing:-0.02em}
+.hero-stat-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+
+.intro{padding:5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;border-bottom:1px solid var(--border)}
+.intro-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.intro-headline{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;line-height:1.2;margin-bottom:1.5rem}
+.intro-body{color:var(--muted);line-height:1.8;font-size:0.95rem}
+.intro-right{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.intro-cell{background:var(--black);padding:1.75rem}
+.intro-cell-num{font-size:2.2rem;font-weight:300;color:var(--accent);display:block;letter-spacing:-0.02em;margin-bottom:0.25rem}
+.intro-cell-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);line-height:1.4}
+
+.work-section{padding:6rem 2.5rem;border-top:1px solid var(--border)}
+.section-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.section-headline{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;margin-bottom:0.75rem}
+.section-sub{color:var(--muted);max-width:580px;margin-bottom:3.5rem;font-size:0.95rem;line-height:1.75}
+.work-list{display:grid;gap:1px;background:var(--border)}
+.work-item{background:var(--black);display:grid;grid-template-columns:280px 1fr;transition:background 0.2s}
+.work-item:hover{background:rgba(255,255,255,0.02)}
+.work-left{padding:2.5rem;border-right:1px solid var(--border)}
+.work-co{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
+.work-years{font-size:12px;color:var(--muted);margin-bottom:1.25rem}
+.work-tags{display:flex;flex-direction:column;gap:0.35rem}
+.tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:0.25rem 0.6rem;display:inline-block;width:fit-content}
+.work-right{padding:2.5rem}
+.work-title{font-size:1.15rem;font-weight:400;margin-bottom:0.85rem;line-height:1.3}
+.work-body{color:var(--muted);line-height:1.8;font-size:0.92rem}
+.work-result{margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--border);font-size:0.88rem;color:var(--accent)}
+
+.venues-section{padding:4rem 2.5rem;border-top:1px solid var(--border)}
+.venues-grid{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2rem}
+.venue-pill{font-size:12px;letter-spacing:0.08em;border:1px solid var(--border);padding:0.5rem 1rem;color:var(--muted);transition:all 0.2s}
+.venue-pill:hover{border-color:var(--accent);color:var(--accent)}
+
+.personal{padding:6rem 2.5rem;border-top:1px solid var(--border)}
+.personal-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.personal-headline{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.15;margin-bottom:1.5rem}
+.personal-body{color:var(--muted);line-height:1.8;font-size:0.95rem;margin-bottom:2rem;max-width:640px}
+.obsessed-label{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.obsessed-list{list-style:none;display:flex;flex-direction:column;gap:0.6rem;max-width:500px}
+.obsessed-list li{font-size:0.92rem;color:var(--muted);padding-left:1rem;position:relative}
+.obsessed-list li::before{content:'';position:absolute;left:0;top:0.65em;width:4px;height:4px;border-radius:50%;background:var(--accent)}
+
+footer{padding:3rem 2.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-left{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid transparent;transition:all 0.2s}
+.footer-links a:hover{color:var(--white);border-color:var(--white)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}
+  .hero{padding:0 1.25rem 3.5rem}
+  .hero-stats{gap:2rem}
+  .intro{grid-template-columns:1fr;padding:3.5rem 1.25rem;gap:2.5rem}
+  .work-section,.venues-section,.personal{padding:4rem 1.25rem}
+  .work-item{grid-template-columns:1fr}
+  .work-left{border-right:none;border-bottom:1px solid var(--border);padding:1.75rem 1.25rem}
+  .work-right{padding:1.75rem 1.25rem}
+  footer{padding:2rem 1.25rem;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Lauren Kashuk</a>
+  <div class="nav-links">
+    <a href="index.html">Brand Building</a>
+    <a href="music-events.html" class="active">Music + Events</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <span class="hero-tag">Music + Event Marketing</span>
+  <h1 class="hero-headline">I am in the center<br>of culture.<br><em>Not adjacent to it.</em></h1>
+  <p class="hero-sub">15 years directing media at shows most people only see on their feed. From Coachella stages to global festival PR across three continents, I bring the same strategic rigor I learned at Ogilvy and Google to rooms where the bass drops at 2am.</p>
+  <div class="hero-stats">
+    <div>
+      <span class="hero-stat-num">300+</span>
+      <span class="hero-stat-label">Live shows</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">3</span>
+      <span class="hero-stat-label">Continents for Ultra</span>
+    </div>
+    <div>
+      <span class="hero-stat-num">2.5MM</span>
+      <span class="hero-stat-label">Viewers, Retrospekt</span>
+    </div>
+  </div>
+</section>
+
+<div class="intro">
+  <div class="intro-left">
+    <p class="intro-eyebrow">The two lives thing</p>
+    <h2 class="intro-headline">CMO brain. Festival floor heart. Both at the same time, always.</h2>
+    <p class="intro-body">Most marketers study culture from the outside. I have spent 15 years inside it. By day I am running brand strategy, P&L accountability, and cross-functional teams. By night I am on festival grounds, behind the decks, in rooms where culture actually gets made. That dual fluency is not a fun fact. It is the reason I can translate what happens on a stage into a campaign that makes people feel something.</p>
+  </div>
+  <div class="intro-right">
+    <div class="intro-cell">
+      <span class="intro-cell-num">300+</span>
+      <span class="intro-cell-label">Live shows marketed across Southern California and beyond</span>
+    </div>
+    <div class="intro-cell">
+      <span class="intro-cell-num">3</span>
+      <span class="intro-cell-label">Continents covered directing PR for Ultra Music Festival</span>
+    </div>
+    <div class="intro-cell">
+      <span class="intro-cell-num">2.5MM</span>
+      <span class="intro-cell-label">Unique viewers reached by Retrospekt virtual festival</span>
+    </div>
+    <div class="intro-cell">
+      <span class="intro-cell-num">15+</span>
+      <span class="intro-cell-label">Years living at the intersection of music, culture, and brand</span>
+    </div>
+  </div>
+</div>
+
+<section class="work-section" id="work">
+  <p class="section-eyebrow">Selected Work</p>
+  <h2 class="section-headline">The work behind the photos.</h2>
+  <p class="section-sub">Not just being there. Building the strategy, the media framework, and the brand narrative that made people show up and keep showing up.</p>
+
+  <div class="work-list">
+    <div class="work-item">
+      <div class="work-left">
+        <p class="work-co">Framework</p>
+        <p class="work-years">2023 – 2025</p>
+        <div class="work-tags">
+          <span class="tag">Influencer Strategy</span>
+          <span class="tag">On-Site Media</span>
+          <span class="tag">Brand Narrative</span>
+          <span class="tag">PR Lead</span>
+        </div>
+      </div>
+      <div class="work-right">
+        <h3 class="work-title">Entertainment and Cultural Marketing for SoCal's Largest Dance Music Promoter</h3>
+        <p class="work-body">Full-time embedded marketing lead across Sound Nightclub, the launch of Spotlight, and media for the Yuma and Quasar stages at Coachella. Exclusive afterparties in partnership with Tao Nightlife and Wynn Las Vegas. Also worked on Art of the Wild, the biannual festival takeover at XS at the Wynn. Built the brand narrative and media framework still guiding the organization today. Brought in and led the PR team that generated the most earned media in the company's history.</p>
+        <p class="work-result">Record earned media. Brand framework still in use. Tao + Wynn partnerships at the highest tier of global nightlife.</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-left">
+        <p class="work-co">Ideaison</p>
+        <p class="work-years">2017 – 2023</p>
+        <div class="work-tags">
+          <span class="tag">Global Festival PR</span>
+          <span class="tag">Virtual Production</span>
+          <span class="tag">Creator Programs</span>
+        </div>
+      </div>
+      <div class="work-right">
+        <h3 class="work-title">Ultra Music Festival PR Across Three Continents + Retrospekt Virtual Festival</h3>
+        <p class="work-body">Directed international PR and earned media strategy for Ultra Music Festival across Miami, Peru, and Europe. Managed press moments, talent coordination, and cultural narrative for one of the world's largest live music events. Self-funded and produced Retrospekt at the height of COVID: a global virtual festival reaching 2.5MM unique viewers built with a full TV broadcast crew, immersive designed stages, and one stage in mixed reality. Centered entirely on underrepresented voices in music. Pioneered the first cannabis-sponsored music festival and grew it for three years.</p>
+        <p class="work-result">2.5MM viewers. Apple Pay partnership. 13MM+ total social reach. Three continents of earned press.</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-left">
+        <p class="work-co">School Night</p>
+        <p class="work-years">2022 – 2023</p>
+        <div class="work-tags">
+          <span class="tag">General Manager</span>
+          <span class="tag">Artist Relations</span>
+          <span class="tag">Content Strategy</span>
+        </div>
+      </div>
+      <div class="work-right">
+        <h3 class="work-title">GM of LA's Most Respected Artist Showcase — Ace Hotel, Disney, Hollywood Records, Twitch</h3>
+        <p class="work-body">School Night is the room where emerging artists play before the world knows their names. I came in to build the team culture and content infrastructure the brand needed. Rebuilt cross-functional operations, closed the gap between on-stage moments and online presence, and managed partner relationships with Disney, Hollywood Records, and Twitch.</p>
+        <p class="work-result">Restructured team operations. Strengthened media presence. Stronger brand-to-artist content alignment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="venues-section">
+  <p class="section-eyebrow">Venues + Festivals</p>
+  <h2 class="section-headline">Rooms I have been in.</h2>
+  <div class="venues-grid">
+    <span class="venue-pill">Coachella — Yuma Stage</span>
+    <span class="venue-pill">Coachella — Quasar Stage</span>
+    <span class="venue-pill">Sound Nightclub</span>
+    <span class="venue-pill">Spotlight (Launch)</span>
+    <span class="venue-pill">XS at the Wynn</span>
+    <span class="venue-pill">Art of the Wild</span>
+    <span class="venue-pill">Ultra Miami</span>
+    <span class="venue-pill">Ultra Peru</span>
+    <span class="venue-pill">Ultra Europe</span>
+    <span class="venue-pill">School Night at Ace Hotel</span>
+    <span class="venue-pill">Rolling Loud LA</span>
+    <span class="venue-pill">BeachLife Festival</span>
+    <span class="venue-pill">Primavera Sound LA</span>
+    <span class="venue-pill">Lightning in a Bottle</span>
+    <span class="venue-pill">Retrospekt (Virtual)</span>
+  </div>
+</section>
+
+<section class="personal">
+  <p class="personal-eyebrow">Beyond the resume</p>
+  <h2 class="personal-headline">I don't just market music. I make it.</h2>
+  <p class="personal-body">I am a DJ and producer who has played everywhere from Twitch streams to renegade festival stages. This is not a hobby I mention to seem cool. It is how I stay genuinely plugged into what culture is doing next, not just what the trend reports say. There is a difference between someone who studies the room and someone who is in it. I am in it.</p>
+  <p class="obsessed-label">Currently obsessed with</p>
+  <ul class="obsessed-list">
+    <li>Afrohouse and world sounds</li>
+    <li>The LA food scene (ask me literally anything)</li>
+    <li>Planning the most detailed honeymoon itinerary Japan has ever seen</li>
+    <li>Lagree, hiking the hills, and moving every single day</li>
+    <li>Generative AI and what it is about to do to creative work</li>
+  </ul>
+</section>
+
+<footer id="contact">
+  <div class="footer-left">Lauren Kashuk — Los Angeles, CA</div>
+  <div class="footer-links">
+    <a href="mailto:lauren.kashuk@gmail.com">lauren.kashuk@gmail.com</a>
+    <a href="https://www.linkedin.com/in/laurenkashuk/" target="_blank">LinkedIn</a>
+    <a href="index.html">Brand Building</a>
+  </div>
+</footer>
+
+</body>
+</html>

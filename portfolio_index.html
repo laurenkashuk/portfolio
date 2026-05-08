@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Brand building portfolio for Lauren Kashuk featuring strategy, positioning, and cross-channel brand work.">
+<title>Lauren Kashuk | Brand Building</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#0a0a0a;--white:#f5f3ee;--accent:#c8a96e;--mid:#1a1a1a;--muted:#777;--border:rgba(255,255,255,0.08)}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2.5rem;background:rgba(10,10,10,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent)}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 5rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,169,110,0.03) 0%,transparent 60%)}
+.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:80px 80px;opacity:0.4}
+.hero-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;position:relative}
+.hero-headline{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;line-height:1.05;letter-spacing:-0.02em;max-width:900px;margin-bottom:2rem;position:relative}
+.hero-headline em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:540px;line-height:1.8;margin-bottom:3rem;position:relative}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;position:relative}
+.btn{display:inline-block;padding:0.75rem 1.75rem;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;border:1px solid var(--white);transition:all 0.2s}
+.btn:hover{background:var(--white);color:var(--black)}
+.btn-ghost{border-color:rgba(255,255,255,0.25);color:var(--muted)}
+.btn-ghost:hover{border-color:var(--white);color:var(--white);background:transparent}
+
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.stat{padding:2.5rem;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-num{font-size:2.8rem;font-weight:300;letter-spacing:-0.02em;color:var(--accent);display:block;margin-bottom:0.35rem}
+.stat-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);line-height:1.4}
+
+section{padding:6rem 2.5rem}
+.section-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.section-headline{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;letter-spacing:-0.01em;margin-bottom:1rem}
+.section-sub{color:var(--muted);max-width:600px;margin-bottom:4rem;line-height:1.75;font-size:0.95rem}
+
+.work-grid{display:grid;gap:1px;background:var(--border)}
+.work-item{background:var(--black);display:grid;grid-template-columns:1fr 2fr;transition:background 0.2s}
+.work-item:hover{background:rgba(255,255,255,0.015)}
+.work-item:hover .work-title{color:var(--accent)}
+.work-left{padding:3rem;border-right:1px solid var(--border)}
+.work-co{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem}
+.work-years{font-size:12px;color:var(--muted);margin-bottom:1.5rem}
+.work-tags{display:flex;flex-direction:column;gap:0.4rem}
+.tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:0.3rem 0.6rem;display:inline-block;width:fit-content}
+.work-right{padding:3rem}
+.work-title{font-size:1.2rem;font-weight:400;margin-bottom:1rem;transition:color 0.2s;line-height:1.3}
+.work-body{color:var(--muted);line-height:1.8;font-size:0.92rem}
+.work-result{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:0.88rem;color:var(--accent)}
+
+.activation-feature{margin-top:1px;background:var(--mid);padding:3.5rem}
+.activation-eyebrow{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.activation-headline{font-size:1.5rem;font-weight:300;line-height:1.3;margin-bottom:1.25rem;max-width:600px}
+.activation-body{color:var(--muted);line-height:1.8;font-size:0.92rem;max-width:600px}
+.activation-partners{margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap}
+.partner-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;border:1px solid rgba(200,169,110,0.3);color:var(--accent);padding:0.3rem 0.75rem}
+
+.strengths{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);margin-top:3rem}
+.strength{background:var(--black);padding:2.25rem;transition:background 0.2s}
+.strength:hover{background:var(--mid)}
+.strength-icon{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.85rem}
+.strength-title{font-size:1rem;font-weight:400;margin-bottom:0.65rem}
+.strength-body{font-size:0.88rem;color:var(--muted);line-height:1.65}
+
+.timeline{margin-top:3rem}
+.tl-item{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid var(--border);padding:2rem 0;transition:background 0.2s}
+.tl-item:hover{background:rgba(255,255,255,0.015)}
+.tl-year{font-size:12px;color:var(--muted);letter-spacing:0.08em;padding-top:0.15rem}
+.tl-co{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:0.3rem}
+.tl-title{font-size:1rem;font-weight:400;margin-bottom:0.5rem}
+.tl-body{font-size:0.88rem;color:var(--muted);line-height:1.65}
+
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--border)}
+.about-left{background:var(--black);padding:4rem}
+.about-right{background:var(--mid);padding:4rem}
+.about-quote{font-size:1.3rem;font-weight:300;line-height:1.55;border-left:2px solid var(--accent);padding-left:1.5rem;margin-bottom:2rem;color:var(--white)}
+.about-body{color:var(--muted);line-height:1.8;font-size:0.92rem;margin-bottom:1.5rem}
+.about-cells{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:2.5rem}
+.about-cell{background:var(--black);padding:1.5rem}
+.about-cell-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
+.about-cell-val{font-size:0.88rem;color:var(--muted);line-height:1.5}
+
+footer{padding:3rem 2.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-left{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid transparent;transition:all 0.2s}
+.footer-links a:hover{color:var(--white);border-color:var(--white)}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.25rem}
+  .hero{padding:0 1.25rem 4rem}
+  .stats-bar{grid-template-columns:1fr 1fr}
+  .stat{padding:1.75rem 1.25rem}
+  section{padding:4rem 1.25rem}
+  .work-item{grid-template-columns:1fr}
+  .work-left{border-right:none;border-bottom:1px solid var(--border);padding:1.75rem 1.25rem}
+  .work-right{padding:1.75rem 1.25rem}
+  .activation-feature{padding:2rem 1.25rem}
+  .about-split{grid-template-columns:1fr}
+  .about-left,.about-right{padding:2.5rem 1.25rem}
+  .tl-item{grid-template-columns:90px 1fr}
+  footer{padding:2rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Lauren Kashuk</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Brand Building</a>
+    <a href="music-events.html">Music + Events</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <p class="hero-eyebrow">Brand Building Portfolio</p>
+  <h1 class="hero-headline">I help brands get <em>clearer,</em><br>sharper, and impossible<br>to ignore.</h1>
+  <p class="hero-sub">15 years across global agency leadership, founder-built ventures, live culture, and in-house brand work. I do my best work when the strategy is bold, the message is human, and the execution actually moves people.</p>
+  <div class="hero-ctas">
+    <a href="#work" class="btn">View Brand Work</a>
+    <a href="#timeline" class="btn btn-ghost">See Full Timeline</a>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num">15+</span>
+    <span class="stat-label">Years across brand, content and communications</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">4.8x</span>
+    <span class="stat-label">Increase in media-driven revenue at Ting</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">2.5MM</span>
+    <span class="stat-label">Unique viewers reached by Retrospekt</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">4MM</span>
+    <span class="stat-label">Fans grown for Google SMB in under 2 years</span>
+  </div>
+</div>
+
+<section id="work">
+  <p class="section-eyebrow">Selected Work</p>
+  <h2 class="section-headline">Brand-building work shaped around clarity, consistency, and market traction.</h2>
+  <p class="section-sub">Examples of how I work when a brand needs sharper language, better structure, and someone willing to move the idea forward.</p>
+
+  <div class="work-grid">
+    <div class="work-item">
+      <div class="work-left">
+        <p class="work-co">Ting Internet</p>
+        <p class="work-years">2025 – Present</p>
+        <div class="work-tags">
+          <span class="tag">Brand Systems</span>
+          <span class="tag">Creative Direction</span>
+          <span class="tag">P&L Ownership</span>
+          <span class="tag">Crisis PR</span>
+        </div>
+      </div>
+      <div class="work-right">
+        <h3 class="work-title">Brand Refresh, Campaign Leadership, and Creative Operations</h3>
+        <p class="work-body">Walked into a restructured team two months in, rebuilt it from the ground up, and repositioned a utility service into a lifestyle brand with a new visual identity, a clearer narrative, and a content engine built for performance. Led a 6-person creative pod and multiple external agencies with full P&L accountability, reporting directly to the CMO. Also directing in-house PR strategy including media narrative development and crisis communications.</p>
+        <p class="work-result">4.8x increase in media-driven revenue. ROAS improved from 0.91x to 2.17x. Five underperforming channels flipped to positive ROI.</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-left">
+        <p class="work-co">Social@Ogilvy</p>
+        <p class="work-years">2012 – 2015</p>
+        <div class="work-tags">
+          <span class="tag">Crisis PR</span>
+          <span class="tag">Global Accounts</span>
+          <span class="tag">Earned Media</span>
+          <span class="tag">VP Level</span>
+        </div>
+      </div>
+      <div class="work-right">
+        <h3 class="work-title">Brand Narrative and Crisis Communications at Global Scale</h3>
+        <p class="work-body">Led messaging strategy for global accounts including BP during the Gulf of Mexico crisis, rebuilding public trust and doubling social audiences across Facebook, Twitter, YouTube, and LinkedIn. Returned as Vice President to lead strategy for Plastics Make It Possible and mentor a team of five across the country.</p>
+        <p class="work-result">Facebook Studio Award Nominee. Webby Award Nominee. Shorty Award Nominee for Brand Presence on Facebook.</p>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-left">
+        <p class="work-co">Ideaison</p>
+        <p class="work-years">2017 – 2023</p>
+        <div class="work-tags">
+          <span class="tag">Agency Founder</span>
+          <span class="tag">Global PR</span>
+          <span class="tag">AEG / UMG</span>
+        </div>
+      </div>
+      <div class="work-right">
+        <h3 class="work-title">Founder-Led Brand Strategy and Cultural Launches</h3>
+        <p class="work-body">Built and ran a multi-disciplinary creative agency for six years, serving clients including AEG/Goldenvoice, Universal Music Group, and Google. Pioneered the first cannabis-sponsored music festival. Directed international PR for Ultra Music Festival across Miami, Peru, and Europe. Self-funded and produced Retrospekt, a global virtual festival reaching 2.5MM unique viewers focused entirely on underrepresented voices in music, built with a full TV broadcast crew and one stage in mixed reality.</p>
+        <p class="work-result">2.5MM unique viewers. Apple Pay partnership. 13MM+ total social reach across initiatives.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="activation-feature">
+    <p class="activation-eyebrow">Brand Activation in the Wild</p>
+    <h3 class="activation-headline">When you get hired to produce a Minion's soundtrack launch, you are doing something right.</h3>
+    <p class="activation-body">This is what brand activation looks like when it actually works. Not a deck. Not a concept. Real people, real joy, real cultural moment. This is the kind of work I have been building toward for 15 years — where the strategy disappears and all you see is the experience.</p>
+    <div class="activation-partners">
+      <span class="partner-tag">AEG / Goldenvoice</span>
+      <span class="partner-tag">Universal Music Group</span>
+      <span class="partner-tag">Ideaison</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <p class="section-eyebrow">How I Work</p>
+  <h2 class="section-headline">The qualities that shape how I lead brands and build momentum.</h2>
+  <div class="strengths">
+    <div class="strength">
+      <p class="strength-icon">Strategic</p>
+      <h3 class="strength-title">Pattern seeker</h3>
+      <p class="strength-body">I spot the links others miss and find the clearest path forward when the brief gets complicated or the stakes get high.</p>
+    </div>
+    <div class="strength">
+      <p class="strength-icon">Activator</p>
+      <h3 class="strength-title">Momentum builder</h3>
+      <p class="strength-body">Strong ideas do not sit still around me. I am most energized when the work starts moving and builds real heat in market.</p>
+    </div>
+    <div class="strength">
+      <p class="strength-icon">Futuristic</p>
+      <h3 class="strength-title">Forward pull</h3>
+      <p class="strength-body">I am less interested in what a brand has been and more focused on what it could become. That instinct has defined my best work.</p>
+    </div>
+    <div class="strength">
+      <p class="strength-icon">Positivity</p>
+      <h3 class="strength-title">Energy carrier</h3>
+      <p class="strength-body">I bring energy that keeps teams creative, resilient, and genuinely excited about the work, even when things get hard.</p>
+    </div>
+    <div class="strength">
+      <p class="strength-icon">Competitive</p>
+      <h3 class="strength-title">Plays to win</h3>
+      <p class="strength-body">I care about making the work better than average, more memorable than expected, and stronger in market than the alternative.</p>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <p class="section-eyebrow">Experience</p>
+  <h2 class="section-headline">A 15-year arc across agency leadership, founder work, and in-house brand building.</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">2025 – Present</div>
+      <div class="tl-content">
+        <p class="tl-co">Ting Internet</p>
+        <p class="tl-title">Director, Content, Campaigns & Creative</p>
+        <p class="tl-body">Rebuilt the creative team from the ground up and repositioned a utility into a lifestyle brand. Full P&L accountability, 6-person pod, reporting to CMO. In-house PR and crisis communications.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2023 – 2025</div>
+      <div class="tl-content">
+        <p class="tl-co">Framework</p>
+        <p class="tl-title">Marketing Manager & On-Site Media Lead</p>
+        <p class="tl-body">Built marketing and media infrastructure across Sound Nightclub, Spotlight, media for Yuma and Quasar stages at Coachella, and exclusive afterparties with Tao Nightlife and Wynn Las Vegas.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2022 – 2023</div>
+      <div class="tl-content">
+        <p class="tl-co">School Night</p>
+        <p class="tl-title">General Manager</p>
+        <p class="tl-body">Managed operations, team culture, and partner relationships with Disney, Hollywood Records, and Twitch at one of LA's most respected music showcase platforms.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2017 – 2023</div>
+      <div class="tl-content">
+        <p class="tl-co">Ideaison</p>
+        <p class="tl-title">Founder & Executive Producer</p>
+        <p class="tl-body">Multi-disciplinary creative agency serving AEG/Goldenvoice, Universal Music Group, and Google. Self-funded Retrospekt, a global virtual festival for 2.5MM viewers centered on underrepresented voices in music.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2015 – 2017</div>
+      <div class="tl-content">
+        <p class="tl-co">Google</p>
+        <p class="tl-title">Small Business Community Lead, SMB Marketing</p>
+        <p class="tl-body">Grew Google's Small Business community to 4MM fans with 26% MoM growth in under two years, operating like a startup inside one of the world's largest companies.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2012 – 2015</div>
+      <div class="tl-content">
+        <p class="tl-co">Social@Ogilvy</p>
+        <p class="tl-title">Senior Content Manager, returned as Vice President</p>
+        <p class="tl-body">Led crisis PR for BP, built global brand narratives, and was recognized with nominations for the Facebook Studio Award, Webby Award, and Shorty Award.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2010 – 2012</div>
+      <div class="tl-content">
+        <p class="tl-co">Y&R Brands</p>
+        <p class="tl-title">Account Executive</p>
+        <p class="tl-body">Worked on LG Mobile at the exact moment the iPhone launched. Managed fully integrated campaigns across TV, OOH, digital, print, experiential, and PR.</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2010</div>
+      <div class="tl-content">
+        <p class="tl-co">Saatchi & Saatchi</p>
+        <p class="tl-title">Paid Intern, Account Management</p>
+        <p class="tl-body">Recruited into Saatchi's competitive program while still in college off the strength of a Back to the Future inspired cover letter. One of 40 accepted. Worked on Miller High Life, Keystone Light, MGD, and MGD 64.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="about-split" id="about">
+  <div class="about-left">
+    <p class="section-eyebrow">About</p>
+    <blockquote class="about-quote">I am most useful when a brand needs a senior operator who can set the direction and make it real.</blockquote>
+    <p class="about-body">Over 15 years my work has moved from journalism and communications foundations into global agency strategy, founder-led brand building, music and culture marketing, and in-house campaign leadership. I have worked on BP's crisis recovery, Google's community growth, Ultra Music Festival's international PR, and the repositioning of a national internet brand. The through-line is consistent: I build the connective tissue between strategy, creative, and the teams who have to carry it forward.</p>
+    <div class="about-cells">
+      <div class="about-cell">
+        <p class="about-cell-label">Based in</p>
+        <p class="about-cell-val">Los Angeles, CA</p>
+      </div>
+      <div class="about-cell">
+        <p class="about-cell-label">Education</p>
+        <p class="about-cell-val">B.S. Advertising, CU Boulder</p>
+      </div>
+      <div class="about-cell">
+        <p class="about-cell-label">Certification</p>
+        <p class="about-cell-val">IDEO Design Thinking</p>
+      </div>
+      <div class="about-cell">
+        <p class="about-cell-label">Recognition</p>
+        <p class="about-cell-val">Webby, Shorty + Facebook Studio Nominee</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <p class="section-eyebrow">Beyond the work</p>
+    <p class="about-body" style="font-size:1.05rem;color:rgba(245,243,238,0.8)">I am a DJ and producer who has played everywhere from Twitch streams to renegade festival stages. It is how I stay genuinely plugged into what culture is doing next, not just what the trend reports say.</p>
+    <p class="about-body">I have managed media for 300+ large-scale shows. I am deeply embedded in the LA food scene. I am planning my honeymoon in Japan with the same level of detail I bring to a campaign brief. And I am always listening to something that most people have not heard yet.</p>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="footer-left">Lauren Kashuk — Los Angeles, CA</div>
+  <div class="footer-links">
+    <a href="mailto:lauren.kashuk@gmail.com">lauren.kashuk@gmail.com</a>
+    <a href="https://www.linkedin.com/in/laurenkashuk/" target="_blank">LinkedIn</a>
+    <a href="music-events.html">Music + Events</a>
+  </div>
+</footer>
+
+</body>
+</html>
