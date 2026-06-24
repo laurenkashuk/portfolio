@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Social creative portfolio for Lauren Kashuk — breakthrough ideas across platforms, mediums, and moments." />
+  <title>Lauren Kashuk | Social Creative</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --off-white: #f9f8f6;
+      --gray: #6b6b6b;
+      --light-gray: #e8e6e2;
+      --accent: #0a0a0a;
+      --font-serif: 'Georgia', 'Times New Roman', serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--light-gray);
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 100;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+    }
+
+    nav .logo { font-weight: 600; }
+
+    nav .links { display: flex; gap: 2rem; }
+
+    nav .links a {
+      color: var(--gray);
+      transition: color 0.2s;
+    }
+
+    nav .links a:hover,
+    nav .links a.active { color: var(--black); }
+
+    /* HERO */
+    .hero {
+      padding: 6rem 2rem 5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: normal;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--gray);
+      max-width: 620px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--light-gray);
+    }
+
+    .stat-item .number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-item .stat-label {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 0.2rem;
+    }
+
+    /* SECTION */
+    section {
+      padding: 5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-intro {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-intro .label {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    .section-intro h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: normal;
+      line-height: 1.3;
+      max-width: 680px;
+    }
+
+    /* CASE STUDY */
+    .case-study {
+      border-top: 1px solid var(--light-gray);
+      padding: 3.5rem 0;
+    }
+
+    .case-study:last-child {
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .case-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .case-brand {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .case-year {
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+
+    .case-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--off-white);
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      color: var(--gray);
+    }
+
+    .case-study h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: normal;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .case-study p {
+      color: var(--gray);
+      line-height: 1.75;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+
+    .case-result {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--black);
+      border-left: 2px solid var(--black);
+      padding-left: 0.9rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* VIDEO GRID */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .video-grid.two-col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 3px;
+      background: var(--off-white);
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .video-caption {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 0.4rem;
+    }
+
+    /* LINK ROW */
+    .link-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .link-row a {
+      font-size: 0.85rem;
+      color: var(--black);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .link-row a:hover { color: var(--gray); }
+
+    /* PHILOSOPHY */
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .philosophy-item h4 {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .philosophy-item p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--light-gray);
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p { font-size: 0.9rem; color: var(--gray); }
+
+    footer .footer-links { display: flex; gap: 1.5rem; }
+
+    footer a {
+      font-size: 0.9rem;
+      color: var(--gray);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--black); }
+
+    @media (max-width: 600px) {
+      .video-grid.two-col { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+      nav .links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="https://laurenkashuk.github.io/portfolio/index.html" class="logo">Lauren Kashuk</a>
+    <div class="links">
+      <a href="https://laurenkashuk.github.io/portfolio/index.html">Brand Building</a>
+      <a href="https://laurenkashuk.github.io/portfolio/music-events.html">Music + Events</a>
+      <a href="social-creative.html" class="active">Social Creative</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="label">Social Creative Portfolio</p>
+    <h1>Not just online.<br><em>Fluent</em> in what it<br>actually means.</h1>
+    <p>15 years of social creative work built on one belief: the best platform-native content isn't content at all. It's a moment people want to be part of. Here's the work that proves it.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="number">2.5MM</div>
+        <div class="stat-label">Unique viewers, Retrospekt</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">4MM</div>
+        <div class="stat-label">Fans grown for Google SMB</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">13MM+</div>
+        <div class="stat-label">Total social reach, Ideaison</div>
+      </div>
+      <div class="stat-item">
+        <div class="number">3.5x</div>
+        <div class="stat-label">Meta efficiency via Gen AI, Ting</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-intro">
+      <p class="label">Selected Work</p>
+      <h2>Breakthrough ideas built for the platform, the moment, and the audience.</h2>
+    </div>
+
+    <!-- RETROSPEKT -->
+    <div class="case-study">
+      <div class="case-meta">
+        <span class="case-brand">Retrospekt</span>
+        <span class="case-year">2020 – 2021</span>
+      </div>
+      <div class="case-tags">
+        <span class="tag">Twitch</span>
+        <span class="tag">YouTube</span>
+        <span class="tag">Instagram</span>
+        <span class="tag">Mixed Reality</span>
+        <span class="tag">Live Production</span>
+        <span class="tag">Founder</span>
+      </div>
+      <h3>A global virtual festival built from scratch — with broadcast-quality production and a mission people actually cared about.</h3>
+      <p>When every live event on earth went dark during COVID, I invested my own money to produce Retrospekt: a global virtual music festival centered entirely on underrepresented voices — women, people of color, and the LGBTQIA+ community. This wasn't a livestream on a laptop. We designed immersive stages, brought in a full TV broadcast crew, ran one stage in mixed reality, and approached every set like a live television broadcast. Distributed across Twitch, YouTube, and Instagram simultaneously.</p>
+      <div class="case-result">2.5MM unique viewers &nbsp;·&nbsp; Apple Pay partnership &nbsp;·&nbsp; 13MM+ total social reach &nbsp;·&nbsp; Fully self-funded</div>
+      <div class="video-grid">
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/B0mHfIDuG6M" title="Retrospekt" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Retrospekt — Main Stage</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/naAXaw3D_1U" title="Retrospekt" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Retrospekt — Mixed Reality Stage</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/FfJZmVRUKsE" title="Retrospekt" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Retrospekt — Artist Set</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/fUk08cVXpzM" title="Retrospekt" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Retrospekt — Full Stream</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/_CO_6e33d5U" title="Retrospekt" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Retrospekt — Highlights</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/B010Enzb3yU" title="Retrospekt" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Retrospekt — Artist Feature</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/dCeB7K1wE8s" title="Retrospekt" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Retrospekt — Behind the Scenes</p>
+        </div>
+      </div>
+      <div class="link-row" style="margin-top:1.2rem;">
+        <a href="https://www.instagram.com/retrospekt.live/" target="_blank" rel="noopener">Instagram → @retrospekt.live</a>
+      </div>
+    </div>
+
+    <!-- FRAMEWORK -->
+    <div class="case-study">
+      <div class="case-meta">
+        <span class="case-brand">Framework / Sound Nightclub</span>
+        <span class="case-year">2023 – 2025</span>
+      </div>
+      <div class="case-tags">
+        <span class="tag">Instagram</span>
+        <span class="tag">TikTok</span>
+        <span class="tag">Real-Time Content</span>
+        <span class="tag">Influencer Strategy</span>
+        <span class="tag">Coachella</span>
+      </div>
+      <h3>Building a brand narrative for SoCal's largest dance music promoter — and keeping it alive across 30+ events a year.</h3>
+      <p>Embedded full-time as the marketing and media lead across Sound Nightclub, the Yuma and Quasar stages at Coachella, Spotlight, and exclusive afterparties with Tao Nightlife and Wynn Las Vegas. The job was to close the gap between what happened on stage and what the world saw, felt, and shared — in real time, every night. Built the brand narrative and media framework still guiding the organization today. Led the PR team that generated the most earned media in the company's history.</p>
+      <div class="case-result">20% YoY audience growth &nbsp;·&nbsp; 40% increase in fan engagement &nbsp;·&nbsp; Brand framework still in use &nbsp;·&nbsp; Record earned media</div>
+      <div class="link-row">
+        <a href="https://www.instagram.com/thisisframework" target="_blank" rel="noopener">Instagram → @thisisframework</a>
+        <a href="https://www.instagram.com/soundnightclub" target="_blank" rel="noopener">Instagram → @soundnightclub</a>
+      </div>
+    </div>
+
+    <!-- TING -->
+    <div class="case-study">
+      <div class="case-meta">
+        <span class="case-brand">Ting Internet</span>
+        <span class="case-year">2025 – Present</span>
+      </div>
+      <div class="case-tags">
+        <span class="tag">YouTube</span>
+        <span class="tag">Connected TV</span>
+        <span class="tag">Generative AI</span>
+        <span class="tag">Meta</span>
+        <span class="tag">Brand Rebrand</span>
+        <span class="tag">Performance Creative</span>
+      </div>
+      <h3>Repositioning a utility brand through performance creative — and using Gen AI to do it faster and smarter.</h3>
+      <p>Walked into a restructured creative team two months after joining and rebuilt it from the ground up. Repositioned Ting from a utility internet service into a lifestyle brand with a new visual identity, new narrative, and a content engine built for performance. Integrated Generative AI into Meta creative production, driving a 3.5x efficiency gain. The work wasn't just creative — it moved the business.</p>
+      <div class="case-result">4.8x increase in media-driven revenue &nbsp;·&nbsp; ROAS improved 0.91x → 2.17x &nbsp;·&nbsp; 200-point ROI swing in CTV &nbsp;·&nbsp; 3.5x Meta efficiency via Gen AI &nbsp;·&nbsp; 5 channels flipped to positive ROI</div>
+      <div class="video-grid">
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/3p4JMw_bkaM" title="Ting Internet" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Ting — Brand Campaign</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/QwEDU8dTTMQ" title="Ting Internet" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Ting — Campaign Spot</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/M_ApxIWOPOQ" title="Ting Internet" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Ting — Creative Execution</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOOGLE SMB -->
+    <div class="case-study">
+      <div class="case-meta">
+        <span class="case-brand">Google — SMB Marketing</span>
+        <span class="case-year">2014 – 2016</span>
+      </div>
+      <div class="case-tags">
+        <span class="tag">YouTube</span>
+        <span class="tag">Community Building</span>
+        <span class="tag">Live Content</span>
+        <span class="tag">Social Growth</span>
+      </div>
+      <h3>Growing a community of 4 million small business owners — inside one of the world's largest companies, run like a startup.</h3>
+      <p>As Community Lead for Google's Small Business social presence, I owned strategy, content, and growth for a social community serving one million small businesses across the US. We built it in real time — iterating fast, scaling what worked, and making a brand as large as Google feel genuinely human and useful. Produced and hosted 18+ live YouTube Hangouts on Air, bringing real business owners and Google experts together in front of live audiences. Grew the community to 4MM fans with 26% month-over-month growth and 70% MoM growth across all channels.</p>
+      <div class="case-result">4MM fans &nbsp;·&nbsp; 26% month-over-month growth &nbsp;·&nbsp; 70% MoM growth across all social channels &nbsp;·&nbsp; 18+ live YouTube Hangouts produced</div>
+      <div class="video-grid two-col">
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/4dkDoXhjXME" title="Google SMB Hangout" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Google SMB — YouTube Hangout on Air</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/3RpfjNPbx2Y" title="Google SMB Hangout" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Google SMB — YouTube Hangout on Air</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- KEYSTONE LIGHT / SAATCHI -->
+    <div class="case-study">
+      <div class="case-meta">
+        <span class="case-brand">Keystone Light — Saatchi & Saatchi</span>
+        <span class="case-year">2010</span>
+      </div>
+      <div class="case-tags">
+        <span class="tag">TV / Video</span>
+      <span class="tag">Integrated Campaign</span>
+        <span class="tag">CPG</span>
+        <span class="tag">Agency</span>
+      </div>
+      <h3>Where it all started — integrated campaign work for iconic consumer brands at one of the world's most storied agencies.</h3>
+      <p>My career started at Saatchi & Saatchi, one of 40 accepted into their competitive paid internship program while still in college. Worked on Miller High Life, Keystone Light, MGD, and MGD 64 — learning what it actually takes to build and maintain iconic consumer brands at a global agency. This is where the discipline came from.</p>
+      <div class="case-result">Foundation for 15 years of integrated brand thinking &nbsp;·&nbsp; Led by the supervisor who brought me to Y&R to run LG Mobile</div>
+      <div class="video-grid two-col">
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/F3vxim2V8f0" title="Keystone Light" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Keystone Light — Campaign</p>
+        </div>
+        <div>
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/hdo-22enQVs" title="Keystone Light" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <p class="video-caption">Keystone Light — Campaign</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section style="background: var(--off-white); max-width: 100%; padding: 5rem 2rem;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <div class="section-intro">
+        <p class="label">How I Think</p>
+        <h2>Social creative is not a format.<br>It is a way of seeing.</h2>
+      </div>
+      <div class="philosophy-grid">
+        <div class="philosophy-item">
+          <h4>Platform-native first</h4>
+          <p>The idea has to belong to the platform. Not adapted for it. Born in it. I think in formats before I think in messages.</p>
+        </div>
+        <div class="philosophy-item">
+          <h4>Culture before calendar</h4>
+          <p>The best social moments are not planned six weeks out. I stay close enough to culture to move when something real is happening.</p>
+        </div>
+        <div class="philosophy-item">
+          <h4>Breakthrough or nothing</h4>
+          <p>Average creative is invisible. I push work until it has a genuine point of view — something people would share even if it wasn't an ad.</p>
+        </div>
+        <div class="philosophy-item">
+          <h4>Data as a creative input</h4>
+          <p>Numbers tell you what landed and why. I use performance data to get sharper, not safer. The goal is always better creative, not just better metrics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <p>Lauren Kashuk — Los Angeles, CA</p>
+    <div class="footer-links">
+      <a href="mailto:lauren.kashuk@gmail.com">lauren.kashuk@gmail.com</a>
+      <a href="https://www.linkedin.com/in/laurenkashuk/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://laurenkashuk.github.io/portfolio/index.html">Brand Building</a>
+      <a href="https://laurenkashuk.github.io/portfolio/music-events.html">Music + Events</a>
+    </div>
+  </footer>
+
+</body>
+</html>
